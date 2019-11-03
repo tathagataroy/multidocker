@@ -19,5 +19,19 @@ after_success:
   - docker push tbiddu/multiclient
   - docker push tbiddu/multiworker
 
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ap-south-1-475987840838
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+
 
 

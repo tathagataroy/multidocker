@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "reactclient",
+            "image": "tbiddu/multiclient",
+            "hostname": "reactclient",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "tbiddu/multiserver",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "tbiddu/multinginx",
+            "hostname": "nginx",
+            "essential": true
+        },
+        {
+            "name": "worker",
+            "image": "tbiddu/multiworker",
+            "hostname": "worker",
+            "essential": false,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["server", "client"]
+        }
+    ]
+}
