@@ -20,13 +20,6 @@
             "image": "tbiddu/multinginx",
             "hostname": "nginx",
             "essential": true,
-            "memory": 128
-        },
-        {
-            "name": "worker",
-            "image": "tbiddu/multiworker",
-            "hostname": "worker",
-            "essential": false,
             "memory": 128,
             "portMappings": [
                 {
@@ -35,6 +28,13 @@
                 }
             ],
             "links": ["server", "client"]
+        },
+        {
+            "name": "worker",
+            "image": "tbiddu/multiworker",
+            "hostname": "worker",
+            "essential": false,
+            "memory": 128
         }
     ]
 }
