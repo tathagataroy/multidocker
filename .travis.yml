@@ -3,21 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t troy/react-test -f ./reactclient/Dockerfile.dev ./reactclient
+  - docker build -t troyreact/react-test -f ./reactclient/Dockerfile.dev ./reactclient
 
 script:
-  - docker run -e CI=true troy/react-test npm test
+  - docker run -e CI=true troyreact/react-test npm test
 
 after_success:
-  - docker build -t troy/multinginx ./nginx
-  - docker build -t troy/multiserver ./server
-  - docker build -t troy/multiclient ./reactclient
-  - docker build -t troy/multiworker ./worker
+  - docker build -t troyreact/multinginx ./nginx
+  - docker build -t troyreact/multiserver ./server
+  - docker build -t troyreact/multiclient ./reactclient
+  - docker build -t troyreact/multiworker ./worker
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
-  - docker push troy/multinginx
-  - docker push troy/multiserver
-  - docker push troy/multiclient
-  - docker push troy/multiworker
+  - docker push troyreact/multinginx
+  - docker push troyreact/multiserver
+  - docker push troyreact/multiclient
+  - docker push troyreact/multiworker
 
 
 
