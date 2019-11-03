@@ -13,7 +13,7 @@ after_success:
   - docker build -t troy/multiserver ./server
   - docker build -t troy/multiclient ./reactclient
   - docker build -t troy/multiworker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKEr_USER" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
   - docker push troy/multinginx
   - docker push troy/multiserver
   - docker push troy/multiclient
