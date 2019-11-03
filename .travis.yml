@@ -10,7 +10,7 @@ script:
 
 after_success:
   - docker build -t tbiddu/multinginx ./nginx
-  - docker build -t tbiddu/multiserver ./server
+  - docker build -t tbid  du/multiserver ./server
   - docker build -t tbiddu/multiclient ./reactclient
   - docker build -t tbiddu/multiworker ./worker
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
@@ -22,10 +22,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: ap-south-1
-  app: docker-multi
-  env:  DockerMulti-env
+  app: docker-multi-deploy
+  env:  DockerMultiDeploy-env
   bucket_name: elasticbeanstalk-ap-south-1-475987840838
-  bucket_path: docker-multi
+  bucket_path: docker-multi-deploy
   on:
     branch: master
   access_key_id:
