@@ -25,7 +25,7 @@ services:
       - PG_PASSWORD=postgres_password
   client:
     build:
-      context: ./client
+      context: ./react-client
       dockerfile: Dockerfile.dev
     
     volumes:
