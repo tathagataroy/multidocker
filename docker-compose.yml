@@ -23,7 +23,8 @@ services:
       - PG_DATABASE=postgres
       - PG_USERNAME=postgres
       - PG_PASSWORD=postgres_password
-  client:
+
+  reactclient:
     build:
       context: ./reactclient
       dockerfile: Dockerfile.dev
