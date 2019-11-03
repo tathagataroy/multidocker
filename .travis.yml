@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t troy/react-test ./client
+
+script:
+  - docker run troy/react-test npm test
+
+after_success:
+  - docker build -t troy/multinginx ./nginx
+  - docker build -t troy/multiserver ./server
+  - docker build -t troy/multiclient ./client
+  - docker build -t troy/multiworker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKEr_USER" --password-stdin
+  - docker push troy/multinginx
+  - docker push troy/multiserver
+  - docker push troy/multiclient
+  - docker push troy/multiworker
+
+
