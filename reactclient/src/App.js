@@ -17,7 +17,6 @@ function App() {
       <div>
         <Route exact path="/" component= {Fibs}></Route>
         <Route path="/otherpage" component={OtherPage}>
-
         </Route>
       </div>
     </div>
