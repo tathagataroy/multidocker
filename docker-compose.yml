@@ -33,7 +33,7 @@ services:
       - /app/node_modules
       - ./reactclient:/app
     
-    
+
   worker:
     build:
       context: ./worker
