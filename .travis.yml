@@ -22,10 +22,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: ap-south-1
-  app: docker-multi-deploy
-  env:  DockerMultiDeploy-env
+  app: reactapp
+  env:  Reactapp-env
   bucket_name: elasticbeanstalk-ap-south-1-475987840838
-  bucket_path: docker-multi-deploy
+  bucket_path: reactapp
   on:
     branch: master
   access_key_id:
