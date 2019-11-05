@@ -3,21 +3,21 @@
     "containerDefinitions": [
         {
             "name": "reactclient",
-            "image": "tbiddu/multiclient",
+            "image": "tbiddu/multiclient-v1",
             "hostname": "reactclient",
             "essential": false,
             "memory": 128
         },
         {
             "name": "server",
-            "image": "tbiddu/multiserver",
+            "image": "tbiddu/multiserver-v1",
             "hostname": "api",
             "essential": false,
             "memory": 128
         },
         {
             "name": "nginx",
-            "image": "tbiddu/multinginx",
+            "image": "tbiddu/multinginx-v1",
             "hostname": "nginx",
             "essential": true,
             "memory": 128,
@@ -31,7 +31,7 @@
         },
         {
             "name": "worker",
-            "image": "tbiddu/multiworker",
+            "image": "tbiddu/multiworker-v1",
             "hostname": "worker",
             "essential": false,
             "memory": 128

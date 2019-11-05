@@ -9,15 +9,15 @@ script:
   - docker run -e CI=true tbiddu/react-test npm test
 
 after_success:
-  - docker build -t tbiddu/multinginx ./nginx
-  - docker build -t tbid  du/multiserver ./server
-  - docker build -t tbiddu/multiclient ./reactclient
-  - docker build -t tbiddu/multiworker ./worker
+  - docker build -t tbiddu/multinginx-v1 ./nginx
+  - docker build -t tbiddu/multiserver-v1 ./server
+  - docker build -t tbiddu/multiclient-v1 ./reactclient
+  - docker build -t tbiddu/multiworker-v1 ./worker
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
-  - docker push tbiddu/multinginx
-  - docker push tbiddu/multiserver
-  - docker push tbiddu/multiclient
-  - docker push tbiddu/multiworker
+  - docker push tbiddu/multinginx-v1
+  - docker push tbiddu/multiserver-v1
+  - docker push tbiddu/multiclient-v1
+  - docker push tbiddu/multiworker-v1
 
 deploy:
   provider: elasticbeanstalk
