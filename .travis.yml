@@ -13,7 +13,7 @@ after_success:
   - docker build -t tbiddu/multiserver ./server
   - docker build -t tbiddu/multiclient ./reactclient
   - docker build -t tbiddu/multiworker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push tbiddu/multinginx
   - docker push tbiddu/multiserver
   - docker push tbiddu/multiclient
