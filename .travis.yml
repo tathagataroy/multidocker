@@ -9,28 +9,28 @@ script:
   - docker run -e CI=true tbiddu/react-test npm test
 
 after_success:
-  - docker build -t tbiddu/multinginx-v2 ./nginx
-  - docker build -t tbiddu/multiserver-v2 ./server
-  - docker build -t tbiddu/multiclient-v2 ./reactclient
-  - docker build -t tbiddu/multiworker-v2 ./worker
+  - docker build -t tbiddu/multinginx ./nginx
+  - docker build -t tbiddu/multiserver ./server
+  - docker build -t tbiddu/multiclient ./reactclient
+  - docker build -t tbiddu/multiworker ./worker
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
-  - docker push tbiddu/multinginx-v2
-  - docker push tbiddu/multiserver-v2
-  - docker push tbiddu/multiclient-v2
-  - docker push tbiddu/multiworker-v2
+  - docker push tbiddu/multinginx
+  - docker push tbiddu/multiserver
+  - docker push tbiddu/multiclient
+  - docker push tbiddu/multiworker
 
-deploy:
-  provider: elasticbeanstalk
-  region: ap-south-1
-  app: reactapp
-  env:  Reactapp-env
-  bucket_name: elasticbeanstalk-ap-south-1-475987840838
-  bucket_path: reactapp
-  on:
-    branch: master
-  access_key_id:
-    secure: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: $AWS_SECRET_KEY
+#deploy:
+#  provider: elasticbeanstalk
+#  region: ap-south-1
+#  app: reactapp
+#  env:  Reactapp-env
+#  bucket_name: elasticbeanstalk-ap-south-1-475987840838
+#  bucket_path: reactapp
+#  on:
+#    branch: master
+#  access_key_id:
+#    secure: $AWS_ACCESS_KEY
+#  secret_access_key:
+#    secure: $AWS_SECRET_KEY
 
 
